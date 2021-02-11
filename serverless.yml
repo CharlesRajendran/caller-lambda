@@ -1,0 +1,21 @@
+service: caller-lambda
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+    lambdaPort: 4002
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: / # will trigger the function for all routes
+          method: any
